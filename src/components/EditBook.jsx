@@ -1,8 +1,12 @@
+/* eslint-disable react/prop-types */
 import '../App.css';
 
-function EditBook() {
+function EditBook({ onEditClick }) {
+    const handleEditClick = () => {
+        onEditClick();
+    }
   return (
-    <div className='edit'>Edit</div>
+    <div className='edit' onClick={handleEditClick}>Edit</div>
   )
 }
 
