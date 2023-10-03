@@ -26,6 +26,9 @@ function ShowBook({ book, onDelete , onEdit }) {
               <EditBook onEdit = {onEdit} onEditClick = {handleEditClick} />
               <DeleteBook onDelete = {onDelete} id = {book.id} />
           </div>
+          <div>
+              <img src={`https://picsum.photos/seed/${book.id}/150/150`} alt=""  />
+          </div>
           <h3>Title : {book.title}</h3>
           <p>Book ID : {book.id}</p>
           
