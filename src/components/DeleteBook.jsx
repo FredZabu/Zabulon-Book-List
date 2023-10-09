@@ -1,9 +1,12 @@
 /* eslint-disable react/prop-types */
 import '../App.css';
+import { useContext } from "react";
+import BookContext from "../context/contextProvider";
 
-function DeleteBook({ onDelete, id }) {
+function DeleteBook({ id }) {
+  const { handleDeleteBook } = useContext(BookContext);
     const handleDeleteClick = () => {
-        onDelete(id);
+        handleDeleteBook(id);
     }
 
   return (

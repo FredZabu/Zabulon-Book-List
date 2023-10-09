@@ -2,8 +2,11 @@
 import EditBook from "./EditBook";
 import DeleteBook from "./DeleteBook";
 import '../App.css';
-import { useState } from "react";
-function ShowBook({ book, onDelete , onEdit }) {
+import { useState, useContext } from "react";
+import BookContext from "../context/contextProvider";
+
+function ShowBook({ book }) {
+    const { handleEditBook } = useContext(BookContext);
     const [showEdit, setShowEdit] = useState(false);
     const [value, setValue] = useState(book.title)
     const handleEditClick = () => {
@@ -13,7 +16,7 @@ function ShowBook({ book, onDelete , onEdit }) {
     const handleSubmit = (event) => {
 
         event.preventDefault();
-        onEdit(book.id, value)
+        handleEditBook(book.id, value)
         setShowEdit(!showEdit)
     }
     const handleChange = (event) => {
@@ -23,8 +26,8 @@ function ShowBook({ book, onDelete , onEdit }) {
   return (
       <div className="book">
           <div className="actionBtn">
-              <EditBook onEdit = {onEdit} onEditClick = {handleEditClick} />
-              <DeleteBook onDelete = {onDelete} id = {book.id} />
+              <EditBook  onEditClick = {handleEditClick} />
+              <DeleteBook id = {book.id} />
           </div>
           <div>
               <img src={`https://picsum.photos/seed/${book.id}/150/150`} alt=""  />

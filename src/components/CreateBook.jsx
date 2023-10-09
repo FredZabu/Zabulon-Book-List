@@ -1,16 +1,17 @@
 /* eslint-disable react/prop-types */
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import '../App.css';
+import BookContext from '../context/contextProvider';
 
-function CreateBook({onCreate}) {
+function CreateBook() {
+    const {handleCreateBook } = useContext(BookContext);
     const [value, setValue] = useState('');
     const handleChange = (event) => {
         setValue(event.target.value);
     }
     const handleSubmit = (event) => {
         event.preventDefault();
-        const id = Math.round(Math.random() * 999);
-        onCreate(id, value);
+        handleCreateBook(value);
         setValue('');
     }
   return (
